@@ -55,15 +55,12 @@ FareHarbor booking flow.
    - `DATABASE_URL` — your Postgres connection string
    - `ADMIN_EMAIL` / `ADMIN_PASSWORD` — admin login credentials
    - `SESSION_SECRET` — a long random string (e.g. `openssl rand -hex 32`)
-4. Vercel will run `npm install` (which runs `prisma generate` via `postinstall`) and
-   `npm run build` automatically.
-5. Run the initial migration against your production database once, from your local machine
-   (with `DATABASE_URL` pointed at production):
-   ```bash
-   npx prisma migrate deploy
-   npm run db:seed   # optional: adds a few example trips
-   ```
-6. Visit `/admin` on your deployed URL and log in with the admin credentials you configured.
+4. Vercel will run `npm install` (which runs `prisma generate` via `postinstall`), then
+   `npm run build`, which runs `prisma migrate deploy` before `next build` — so every deploy
+   automatically applies any pending database migrations. No manual database access needed.
+5. Visit `/admin` on your deployed URL and log in with the admin credentials you configured. To
+   add a few example trips, run `npm run db:seed` locally with `DATABASE_URL` pointed at
+   production, or just add trips by hand from the admin dashboard.
 
 ## Project structure
 
