@@ -1,0 +1,131 @@
+// Meramec River Outfitters — booking platform data model
+// NOTE: provider is "postgresql". On Vercel, set DATABASE_URL to a hosted
+// Postgres instance (Vercel Postgres, Neon, Supabase, etc). Locally this
+// points at a local Postgres server for development.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TripCategory {
+  FLOAT
+  CAMPING
+  COMBO
+}
+
+enum PriceType {
+  PER_PERSON
+  PER_BOOKING
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+// A bookable product, e.g. "Half-Day Float", "Overnight Float & Campsite"
+model Trip {
+  id          String       @id @default(cuid())
+  name        String
+  slug        String       @unique
+  category    TripCategory
+  description String
+  imageUrl    String?
+  basePrice   Float // price per person in USD
+  durationLabel String // e.g. "4-5 hours", "2 days / 1 night"
+  maxPerBooking Int        @default(20)
+  active      Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  addOns      TripAddOn[]
+  departures  Departure[]
+}
+
+// A specific date/time instance of a Trip that customers can book into
+model Departure {
+  id          String   @id @default(cuid())
+  tripId      String
+  trip        Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  date        DateTime // calendar date of the trip
+  startTime   String   // e.g. "09:00 AM"
+  capacity    Int      // max number of people
+  notes       String?
+  cancelled   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  bookings    Booking[]
+
+  @@index([tripId, date])
+}
+
+// Add-ons available globally, associated to trips via TripAddOn
+model AddOn {
+  id          String       @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  priceType   PriceType    @default(PER_PERSON)
+  active      Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+
+  trips       TripAddOn[]
+  bookingAddOns BookingAddOn[]
+}
+
+// Join table: which add-ons are offered for which trips
+model TripAddOn {
+  id      String @id @default(cuid())
+  tripId  String
+  trip    Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  addOnId String
+  addOn   AddOn  @relation(fields: [addOnId], references: [id], onDelete: Cascade)
+
+  @@unique([tripId, addOnId])
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  confirmationCode String     @unique
+  departureId   String
+  departure     Departure     @relation(fields: [departureId], references: [id], onDelete: Restrict)
+
+  customerName  String
+  customerEmail String
+  customerPhone String
+
+  adults        Int           @default(1)
+  children      Int           @default(0)
+
+  status        BookingStatus @default(PENDING)
+  notes         String?
+
+  subtotal      Float
+  total         Float
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  addOns        BookingAddOn[]
+
+  @@index([departureId])
+}
+
+model BookingAddOn {
+  id        String  @id @default(cuid())
+  bookingId String
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  addOnId   String
+  addOn     AddOn   @relation(fields: [addOnId], references: [id], onDelete: Restrict)
+  quantity  Int     @default(1)
+  unitPrice Float
+
+  @@unique([bookingId, addOnId])
+}
