@@ -54,40 +54,40 @@ export default function TripForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl space-y-4 rounded-xl border border-sand-dark/40 bg-white p-6">
+    <form onSubmit={handleSubmit} className="max-w-2xl space-y-4 rounded-xl border border-tint-dark bg-white p-6">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="flex flex-col text-sm font-medium text-forest-dark sm:col-span-2">
+        <label className="flex flex-col text-sm font-medium text-black sm:col-span-2">
           Trip name
           <input
             required
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Category
           <select
             value={form.category}
             onChange={(e) => setForm((f) => ({ ...f, category: e.target.value as TripCategory }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           >
             <option value="FLOAT">Float Trip</option>
             <option value="CAMPING">Camping</option>
             <option value="COMBO">Float + Camp</option>
           </select>
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Duration label
           <input
             required
             value={form.durationLabel}
             onChange={(e) => setForm((f) => ({ ...f, durationLabel: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
             placeholder="e.g. 4-5 hours"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Base price (per person, USD)
           <input
             required
@@ -96,10 +96,10 @@ export default function TripForm({
             min={0}
             value={form.basePrice}
             onChange={(e) => setForm((f) => ({ ...f, basePrice: Number(e.target.value) }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Max party size per booking
           <input
             required
@@ -107,28 +107,28 @@ export default function TripForm({
             min={1}
             value={form.maxPerBooking}
             onChange={(e) => setForm((f) => ({ ...f, maxPerBooking: Number(e.target.value) }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark sm:col-span-2">
+        <label className="flex flex-col text-sm font-medium text-black sm:col-span-2">
           Description
           <textarea
             required
             rows={3}
             value={form.description}
             onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark sm:col-span-2">
+        <label className="flex flex-col text-sm font-medium text-black sm:col-span-2">
           Image URL (optional)
           <input
             value={form.imageUrl}
             onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex items-center gap-2 text-sm font-medium text-forest-dark">
+        <label className="flex items-center gap-2 text-sm font-medium text-black">
           <input
             type="checkbox"
             checked={form.active}
@@ -138,13 +138,13 @@ export default function TripForm({
         </label>
       </div>
 
-      {error && <p className="text-sm text-clay">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
 
       <div className="flex items-center justify-between pt-2">
         <button
           type="submit"
           disabled={isPending}
-          className="rounded-full bg-river px-5 py-2 text-sm font-semibold text-white hover:bg-river-dark disabled:opacity-60"
+          className="rounded-full bg-pink px-5 py-2 text-sm font-semibold text-white hover:bg-pink-dark disabled:opacity-60"
         >
           {isPending ? "Saving..." : tripId ? "Save Changes" : "Create Trip"}
         </button>
@@ -152,7 +152,7 @@ export default function TripForm({
           <button
             type="button"
             onClick={handleDelete}
-            className="text-sm font-medium text-clay hover:underline"
+            className="text-sm font-medium text-danger hover:underline"
           >
             Delete trip
           </button>

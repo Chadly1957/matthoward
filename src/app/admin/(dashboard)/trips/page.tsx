@@ -13,18 +13,18 @@ export default async function AdminTripsPage() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-forest-dark">Trips &amp; Packages</h1>
+        <h1 className="text-xl font-bold text-black">Trips &amp; Packages</h1>
         <Link
           href="/admin/trips/new"
-          className="rounded-full bg-river px-4 py-2 text-sm font-semibold text-white hover:bg-river-dark"
+          className="rounded-full bg-pink px-4 py-2 text-sm font-semibold text-white hover:bg-pink-dark"
         >
           + New Trip
         </Link>
       </div>
 
-      <div className="mt-6 overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+      <div className="mt-6 overflow-x-auto rounded-xl border border-tint-dark bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-sand/40 text-left text-foreground/60">
+          <thead className="bg-tint text-left text-foreground/60">
             <tr>
               <th className="px-4 py-2">Name</th>
               <th className="px-4 py-2">Category</th>
@@ -36,22 +36,22 @@ export default async function AdminTripsPage() {
           </thead>
           <tbody>
             {trips.map((trip) => (
-              <tr key={trip.id} className="border-t border-sand-dark/30">
-                <td className="px-4 py-2 font-medium text-forest-dark">{trip.name}</td>
+              <tr key={trip.id} className="border-t border-tint-dark">
+                <td className="px-4 py-2 font-medium text-black">{trip.name}</td>
                 <td className="px-4 py-2">{trip.category}</td>
                 <td className="px-4 py-2">{formatCurrency(trip.basePrice)}</td>
                 <td className="px-4 py-2">{trip._count.departures}</td>
                 <td className="px-4 py-2">
                   <span
                     className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                      trip.active ? "bg-forest/10 text-forest" : "bg-clay/10 text-clay"
+                      trip.active ? "bg-tint text-black/70" : "bg-danger/10 text-danger"
                     }`}
                   >
                     {trip.active ? "Active" : "Inactive"}
                   </span>
                 </td>
                 <td className="px-4 py-2 text-right">
-                  <Link href={`/admin/trips/${trip.id}`} className="text-river hover:underline">
+                  <Link href={`/admin/trips/${trip.id}`} className="text-pink hover:underline">
                     Manage
                   </Link>
                 </td>

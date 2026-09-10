@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8f1;
-  --foreground: #1e2b23;
-  --river: #1f6f78;
-  --river-dark: #14505a;
-  --sand: #e8dcc4;
-  --sand-dark: #c9b891;
-  --forest: #2d4a34;
-  --forest-dark: #1e3324;
-  --clay: #b5502f;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --ink: #0a0a0a;
+  --ink-dark: #000000;
+  --pink: #e81e62;
+  --pink-dark: #c2154f;
+  --tint: #f6f6f7;
+  --tint-dark: #e3e3e6;
+  --danger: #dc2626;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-river: var(--river);
-  --color-river-dark: var(--river-dark);
-  --color-sand: var(--sand);
-  --color-sand-dark: var(--sand-dark);
-  --color-forest: var(--forest);
-  --color-forest-dark: var(--forest-dark);
-  --color-clay: var(--clay);
+  --color-ink: var(--ink);
+  --color-ink-dark: var(--ink-dark);
+  --color-pink: var(--pink);
+  --color-pink-dark: var(--pink-dark);
+  --color-tint: var(--tint);
+  --color-tint-dark: var(--tint-dark);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

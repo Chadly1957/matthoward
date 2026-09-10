@@ -24,31 +24,31 @@ export default async function AdminDashboardPage() {
   return (
     <div className="space-y-10">
       <div className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl border border-sand-dark/40 bg-white p-6">
+        <div className="rounded-2xl border border-tint-dark bg-white p-6">
           <div className="text-sm text-foreground/60">Active Trips</div>
-          <div className="mt-1 text-3xl font-bold text-forest-dark">{tripCount}</div>
-          <Link href="/admin/trips" className="mt-2 inline-block text-sm text-river hover:underline">
+          <div className="mt-1 text-3xl font-bold text-black">{tripCount}</div>
+          <Link href="/admin/trips" className="mt-2 inline-block text-sm text-pink hover:underline">
             Manage trips &rarr;
           </Link>
         </div>
-        <div className="rounded-2xl border border-sand-dark/40 bg-white p-6">
+        <div className="rounded-2xl border border-tint-dark bg-white p-6">
           <div className="text-sm text-foreground/60">Pending Bookings</div>
-          <div className="mt-1 text-3xl font-bold text-forest-dark">{pendingBookings}</div>
-          <Link href="/admin/bookings" className="mt-2 inline-block text-sm text-river hover:underline">
+          <div className="mt-1 text-3xl font-bold text-black">{pendingBookings}</div>
+          <Link href="/admin/bookings" className="mt-2 inline-block text-sm text-pink hover:underline">
             Review bookings &rarr;
           </Link>
         </div>
-        <div className="rounded-2xl border border-sand-dark/40 bg-white p-6">
+        <div className="rounded-2xl border border-tint-dark bg-white p-6">
           <div className="text-sm text-foreground/60">Upcoming Departures</div>
-          <div className="mt-1 text-3xl font-bold text-forest-dark">{upcomingDepartures.length}</div>
+          <div className="mt-1 text-3xl font-bold text-black">{upcomingDepartures.length}</div>
         </div>
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-forest-dark">Upcoming Departures</h2>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+        <h2 className="text-lg font-semibold text-black">Upcoming Departures</h2>
+        <div className="mt-3 overflow-x-auto rounded-xl border border-tint-dark bg-white">
           <table className="w-full text-sm">
-            <thead className="bg-sand/40 text-left text-foreground/60">
+            <thead className="bg-tint text-left text-foreground/60">
               <tr>
                 <th className="px-4 py-2">Trip</th>
                 <th className="px-4 py-2">Date</th>
@@ -60,8 +60,8 @@ export default async function AdminDashboardPage() {
               {upcomingDepartures.map((d) => {
                 const booked = d.bookings.reduce((sum, b) => sum + b.adults + b.children, 0);
                 return (
-                  <tr key={d.id} className="border-t border-sand-dark/30">
-                    <td className="px-4 py-2 font-medium text-forest-dark">{d.trip.name}</td>
+                  <tr key={d.id} className="border-t border-tint-dark">
+                    <td className="px-4 py-2 font-medium text-black">{d.trip.name}</td>
                     <td className="px-4 py-2">
                       {d.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                     </td>
@@ -85,10 +85,10 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-forest-dark">Recent Bookings</h2>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+        <h2 className="text-lg font-semibold text-black">Recent Bookings</h2>
+        <div className="mt-3 overflow-x-auto rounded-xl border border-tint-dark bg-white">
           <table className="w-full text-sm">
-            <thead className="bg-sand/40 text-left text-foreground/60">
+            <thead className="bg-tint text-left text-foreground/60">
               <tr>
                 <th className="px-4 py-2">Code</th>
                 <th className="px-4 py-2">Customer</th>
@@ -99,13 +99,13 @@ export default async function AdminDashboardPage() {
             </thead>
             <tbody>
               {recentBookings.map((b) => (
-                <tr key={b.id} className="border-t border-sand-dark/30">
+                <tr key={b.id} className="border-t border-tint-dark">
                   <td className="px-4 py-2 font-mono text-xs">{b.confirmationCode}</td>
                   <td className="px-4 py-2">{b.customerName}</td>
                   <td className="px-4 py-2">{b.departure.trip.name}</td>
                   <td className="px-4 py-2">{formatCurrency(b.total)}</td>
                   <td className="px-4 py-2">
-                    <span className="rounded-full bg-sand px-2 py-0.5 text-xs font-medium">
+                    <span className="rounded-full bg-tint px-2 py-0.5 text-xs font-medium text-black">
                       {b.status}
                     </span>
                   </td>

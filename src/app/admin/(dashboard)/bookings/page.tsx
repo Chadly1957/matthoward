@@ -11,10 +11,10 @@ export default async function AdminBookingsPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-forest-dark">Bookings</h1>
-      <div className="mt-6 overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+      <h1 className="text-xl font-bold text-black">Bookings</h1>
+      <div className="mt-6 overflow-x-auto rounded-xl border border-tint-dark bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-sand/40 text-left text-foreground/60">
+          <thead className="bg-tint text-left text-foreground/60">
             <tr>
               <th className="px-4 py-2">Code</th>
               <th className="px-4 py-2">Customer</th>

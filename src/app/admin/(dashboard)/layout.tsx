@@ -4,8 +4,8 @@ import { logoutAdmin } from "@/lib/actions/admin-auth";
 
 export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-sand/30">
-      <header className="border-b border-sand-dark/50 bg-forest text-white">
+    <div className="min-h-screen bg-tint">
+      <header className="border-b border-tint-dark bg-black text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <Link href="/admin" className="flex items-center gap-2 font-semibold">
             <Image
@@ -18,19 +18,19 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
             Big H Admin
           </Link>
           <nav className="flex items-center gap-5 text-sm">
-            <Link href="/admin" className="hover:text-sand">
+            <Link href="/admin" className="hover:text-pink">
               Dashboard
             </Link>
-            <Link href="/admin/trips" className="hover:text-sand">
+            <Link href="/admin/trips" className="hover:text-pink">
               Trips
             </Link>
-            <Link href="/admin/addons" className="hover:text-sand">
+            <Link href="/admin/addons" className="hover:text-pink">
               Add-ons
             </Link>
-            <Link href="/admin/bookings" className="hover:text-sand">
+            <Link href="/admin/bookings" className="hover:text-pink">
               Bookings
             </Link>
-            <Link href="/" className="hover:text-sand">
+            <Link href="/" className="hover:text-pink">
               View Site
             </Link>
             <form action={logoutAdmin}>

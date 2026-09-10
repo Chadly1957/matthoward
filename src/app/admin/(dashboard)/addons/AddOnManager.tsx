@@ -67,27 +67,27 @@ export default function AddOnManager({ addOns }: { addOns: AddOn[] }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-      <form onSubmit={handleSubmit} className="h-fit space-y-4 rounded-xl border border-sand-dark/40 bg-white p-6">
-        <h2 className="font-semibold text-forest-dark">{editingId ? "Edit Add-on" : "New Add-on"}</h2>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+      <form onSubmit={handleSubmit} className="h-fit space-y-4 rounded-xl border border-tint-dark bg-white p-6">
+        <h2 className="font-semibold text-black">{editingId ? "Edit Add-on" : "New Add-on"}</h2>
+        <label className="flex flex-col text-sm font-medium text-black">
           Name
           <input
             required
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Description
           <input
             value={form.description}
             onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
         <div className="grid grid-cols-2 gap-4">
-          <label className="flex flex-col text-sm font-medium text-forest-dark">
+          <label className="flex flex-col text-sm font-medium text-black">
             Price (USD)
             <input
               required
@@ -96,22 +96,22 @@ export default function AddOnManager({ addOns }: { addOns: AddOn[] }) {
               min={0}
               value={form.price}
               onChange={(e) => setForm((f) => ({ ...f, price: Number(e.target.value) }))}
-              className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+              className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
             />
           </label>
-          <label className="flex flex-col text-sm font-medium text-forest-dark">
+          <label className="flex flex-col text-sm font-medium text-black">
             Price type
             <select
               value={form.priceType}
               onChange={(e) => setForm((f) => ({ ...f, priceType: e.target.value as PriceType }))}
-              className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+              className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
             >
               <option value="PER_PERSON">Per person</option>
               <option value="PER_BOOKING">Per booking</option>
             </select>
           </label>
         </div>
-        <label className="flex items-center gap-2 text-sm font-medium text-forest-dark">
+        <label className="flex items-center gap-2 text-sm font-medium text-black">
           <input
             type="checkbox"
             checked={form.active}
@@ -123,7 +123,7 @@ export default function AddOnManager({ addOns }: { addOns: AddOn[] }) {
           <button
             type="submit"
             disabled={isPending}
-            className="rounded-full bg-river px-5 py-2 text-sm font-semibold text-white hover:bg-river-dark disabled:opacity-60"
+            className="rounded-full bg-pink px-5 py-2 text-sm font-semibold text-white hover:bg-pink-dark disabled:opacity-60"
           >
             {editingId ? "Save Changes" : "Add"}
           </button>
@@ -135,9 +135,9 @@ export default function AddOnManager({ addOns }: { addOns: AddOn[] }) {
         </div>
       </form>
 
-      <div className="overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+      <div className="overflow-x-auto rounded-xl border border-tint-dark bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-sand/40 text-left text-foreground/60">
+          <thead className="bg-tint text-left text-foreground/60">
             <tr>
               <th className="px-4 py-2">Name</th>
               <th className="px-4 py-2">Price</th>
@@ -147,25 +147,25 @@ export default function AddOnManager({ addOns }: { addOns: AddOn[] }) {
           </thead>
           <tbody>
             {addOns.map((a) => (
-              <tr key={a.id} className="border-t border-sand-dark/30">
-                <td className="px-4 py-2 font-medium text-forest-dark">{a.name}</td>
+              <tr key={a.id} className="border-t border-tint-dark">
+                <td className="px-4 py-2 font-medium text-black">{a.name}</td>
                 <td className="px-4 py-2">
                   ${a.price.toFixed(2)} {a.priceType === "PER_PERSON" ? "/person" : "/booking"}
                 </td>
                 <td className="px-4 py-2">
                   <span
                     className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                      a.active ? "bg-forest/10 text-forest" : "bg-clay/10 text-clay"
+                      a.active ? "bg-tint text-black/70" : "bg-danger/10 text-danger"
                     }`}
                   >
                     {a.active ? "Active" : "Inactive"}
                   </span>
                 </td>
                 <td className="space-x-3 px-4 py-2 text-right text-xs">
-                  <button onClick={() => startEdit(a)} className="font-medium text-river hover:underline">
+                  <button onClick={() => startEdit(a)} className="font-medium text-pink hover:underline">
                     Edit
                   </button>
-                  <button onClick={() => handleDelete(a.id)} className="font-medium text-clay hover:underline">
+                  <button onClick={() => handleDelete(a.id)} className="font-medium text-danger hover:underline">
                     Delete
                   </button>
                 </td>
