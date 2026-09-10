@@ -146,11 +146,11 @@ async function main() {
   });
 
   const tripDepartureConfig: { trip: typeof halfDay; capacity: number; times: string[] }[] = [
-    { trip: halfDay, capacity: 24, times: ["9:00 AM", "12:00 PM"] },
-    { trip: fullDay, capacity: 24, times: ["8:00 AM"] },
-    { trip: tubeFloat, capacity: 30, times: ["10:00 AM", "1:00 PM"] },
-    { trip: overnightCamp, capacity: 12, times: ["Check-in 2:00 PM"] },
-    { trip: comboTrip, capacity: 16, times: ["8:00 AM"] },
+    { trip: halfDay, capacity: 24, times: ["09:00", "12:00"] },
+    { trip: fullDay, capacity: 24, times: ["08:00"] },
+    { trip: tubeFloat, capacity: 30, times: ["10:00", "13:00"] },
+    { trip: overnightCamp, capacity: 12, times: ["14:00"] },
+    { trip: comboTrip, capacity: 16, times: ["08:00"] },
   ];
 
   for (const { trip, capacity, times } of tripDepartureConfig) {

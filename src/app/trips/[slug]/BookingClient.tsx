@@ -3,7 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createBooking } from "@/lib/actions/booking";
-import { formatCurrency, calculateBookingTotal } from "@/lib/pricing";
+import { formatCurrency, calculateBookingTotal, formatTimeLabel } from "@/lib/pricing";
 
 type Departure = {
   id: string;
@@ -141,7 +141,7 @@ export default function BookingClient({
                       day: "numeric",
                     })}
                   </div>
-                  <div className="text-foreground/60">{d.startTime}</div>
+                  <div className="text-foreground/60">{formatTimeLabel(d.startTime)}</div>
                   <div className={`mt-1 text-xs ${full ? "text-clay" : "text-forest"}`}>
                     {full ? "Fully booked" : `${left} spot${left === 1 ? "" : "s"} left`}
                   </div>
@@ -267,7 +267,7 @@ export default function BookingClient({
               month: "long",
               day: "numeric",
             })}{" "}
-            &middot; {departure.startTime}
+            &middot; {formatTimeLabel(departure.startTime)}
           </p>
         )}
         <div className="mt-4 space-y-2 text-sm">

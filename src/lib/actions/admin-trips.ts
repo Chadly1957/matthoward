@@ -101,6 +101,24 @@ export async function addDeparture(tripId: string, data: { date: string; startTi
   revalidatePath(`/admin/trips/${tripId}`);
 }
 
+export async function updateDeparture(
+  tripId: string,
+  departureId: string,
+  data: { date: string; startTime: string; capacity: number; notes?: string }
+) {
+  await requireAdmin();
+  await prisma.departure.update({
+    where: { id: departureId },
+    data: {
+      date: new Date(data.date),
+      startTime: data.startTime,
+      capacity: data.capacity,
+      notes: data.notes || null,
+    },
+  });
+  revalidatePath(`/admin/trips/${tripId}`);
+}
+
 export async function deleteDeparture(tripId: string, departureId: string) {
   await requireAdmin();
   await prisma.departure.delete({ where: { id: departureId } });

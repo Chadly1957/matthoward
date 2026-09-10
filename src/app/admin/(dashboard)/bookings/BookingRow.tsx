@@ -3,7 +3,7 @@
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { updateBookingStatus } from "@/lib/actions/admin-bookings";
-import { formatCurrency } from "@/lib/pricing";
+import { formatCurrency, formatTimeLabel } from "@/lib/pricing";
 import { BookingStatus } from "@prisma/client";
 
 export default function BookingRow({
@@ -46,7 +46,7 @@ export default function BookingRow({
         <div>{booking.tripName}</div>
         <div className="text-xs text-foreground/60">
           {new Date(booking.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}{" "}
-          &middot; {booking.startTime}
+          &middot; {formatTimeLabel(booking.startTime)}
         </div>
       </td>
       <td className="px-4 py-3">

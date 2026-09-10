@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { formatCurrency } from "@/lib/pricing";
+import { formatCurrency, formatTimeLabel } from "@/lib/pricing";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +65,7 @@ export default async function AdminDashboardPage() {
                     <td className="px-4 py-2">
                       {d.date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                     </td>
-                    <td className="px-4 py-2">{d.startTime}</td>
+                    <td className="px-4 py-2">{formatTimeLabel(d.startTime)}</td>
                     <td className="px-4 py-2">
                       {booked} / {d.capacity}
                     </td>
