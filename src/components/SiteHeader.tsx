@@ -5,18 +5,15 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-sand-dark/60 bg-background/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center">
           <Image
             src="/big_h_web_logo.png"
             alt="Big H Recreations LLC"
-            width={160}
-            height={40}
-            className="h-9 w-auto"
+            width={192}
+            height={48}
+            className="h-11 w-auto"
             priority
           />
-          <span className="font-semibold tracking-tight text-forest">
-            Big H Recreations LLC
-          </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium text-forest-dark sm:flex">
           <Link href="/trips" className="hover:text-river">
