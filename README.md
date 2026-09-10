@@ -1,4 +1,4 @@
-# Meramec River Outfitters
+# Big H Recreations LLC
 
 Hassle-free floating and camping on the Meramec River, Missouri. A booking platform for float
 trips and riverside camping, built with Next.js (App Router) and Prisma/Postgres, modeled on the
@@ -61,6 +61,11 @@ FareHarbor booking flow.
 5. Visit `/admin` on your deployed URL and log in with the admin credentials you configured. To
    add a few example trips, run `npm run db:seed` locally with `DATABASE_URL` pointed at
    production, or just add trips by hand from the admin dashboard.
+
+## Branding
+
+The site logo is loaded from `public/big_h_web_logo.png`. To update it, replace that file with a
+new PNG of the same name and redeploy — no code changes needed.
 
 ## Project structure
 

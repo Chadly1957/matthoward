@@ -34,7 +34,7 @@ function LoginForm() {
         className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl"
       >
         <h1 className="text-xl font-bold text-forest-dark">Admin Login</h1>
-        <p className="mt-1 text-sm text-foreground/60">Meramec River Outfitters</p>
+        <p className="mt-1 text-sm text-foreground/60">Big H Recreations LLC</p>
 
         <label className="mt-6 flex flex-col text-sm font-medium text-forest-dark">
           Email

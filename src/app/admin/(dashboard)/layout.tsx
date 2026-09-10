@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { logoutAdmin } from "@/lib/actions/admin-auth";
 
@@ -6,8 +7,15 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
     <div className="min-h-screen bg-sand/30">
       <header className="border-b border-sand-dark/50 bg-forest text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <Link href="/admin" className="font-semibold">
-            🛶 Meramec Admin
+          <Link href="/admin" className="flex items-center gap-2 font-semibold">
+            <Image
+              src="/big_h_web_logo.png"
+              alt="Big H Recreations LLC"
+              width={140}
+              height={36}
+              className="h-8 w-auto"
+            />
+            Big H Admin
           </Link>
           <nav className="flex items-center gap-5 text-sm">
             <Link href="/admin" className="hover:text-sand">
