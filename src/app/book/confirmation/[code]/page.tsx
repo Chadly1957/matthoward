@@ -27,30 +27,30 @@ export default async function ConfirmationPage({
       <SiteHeader />
       <main className="flex-1">
         <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-          <div className="rounded-2xl border border-sand-dark/40 bg-white p-8 text-center shadow-sm">
+          <div className="rounded-2xl border border-tint-dark bg-white p-8 text-center shadow-sm">
             <div className="text-4xl">✅</div>
-            <h1 className="mt-4 text-2xl font-bold text-forest-dark">
+            <h1 className="mt-4 text-2xl font-bold text-black">
               Reservation {booking.status === "PENDING" ? "Received" : "Confirmed"}!
             </h1>
             <p className="mt-2 text-foreground/70">
               A confirmation email will be sent to {booking.customerEmail}. Save your
               confirmation code below.
             </p>
-            <div className="mt-6 rounded-xl bg-sand/40 px-4 py-3 font-mono text-lg font-semibold tracking-widest text-forest-dark">
+            <div className="mt-6 rounded-xl bg-tint px-4 py-3 font-mono text-lg font-semibold tracking-widest text-black">
               {booking.confirmationCode}
             </div>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-sand-dark/40 bg-white p-6 text-left shadow-sm">
-            <h2 className="text-lg font-semibold text-forest-dark">Trip Details</h2>
+          <div className="mt-8 rounded-2xl border border-tint-dark bg-white p-6 text-left shadow-sm">
+            <h2 className="text-lg font-semibold text-black">Trip Details</h2>
             <dl className="mt-4 space-y-2 text-sm">
               <div className="flex justify-between">
                 <dt className="text-foreground/60">Trip</dt>
-                <dd className="font-medium text-forest-dark">{booking.departure.trip.name}</dd>
+                <dd className="font-medium text-black">{booking.departure.trip.name}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-foreground/60">Date</dt>
-                <dd className="font-medium text-forest-dark">
+                <dd className="font-medium text-black">
                   {booking.departure.date.toLocaleDateString("en-US", {
                     weekday: "long",
                     month: "long",
@@ -61,7 +61,7 @@ export default async function ConfirmationPage({
               </div>
               <div className="flex justify-between">
                 <dt className="text-foreground/60">Party size</dt>
-                <dd className="font-medium text-forest-dark">
+                <dd className="font-medium text-black">
                   {booking.adults} adult{booking.adults === 1 ? "" : "s"}
                   {booking.children > 0 ? `, ${booking.children} child(ren)` : ""}
                 </dd>
@@ -69,7 +69,7 @@ export default async function ConfirmationPage({
               {booking.addOns.length > 0 && (
                 <div className="flex justify-between">
                   <dt className="text-foreground/60">Add-ons</dt>
-                  <dd className="text-right font-medium text-forest-dark">
+                  <dd className="text-right font-medium text-black">
                     {booking.addOns.map((a) => (
                       <div key={a.id}>
                         {a.quantity}&times; {a.addOn.name}
@@ -78,7 +78,7 @@ export default async function ConfirmationPage({
                   </dd>
                 </div>
               )}
-              <div className="flex justify-between border-t border-sand-dark/40 pt-2 text-base font-semibold text-forest-dark">
+              <div className="flex justify-between border-t border-tint-dark pt-2 text-base font-semibold text-black">
                 <dt>Total</dt>
                 <dd>{formatCurrency(booking.total)}</dd>
               </div>
@@ -86,7 +86,7 @@ export default async function ConfirmationPage({
           </div>
 
           <div className="mt-8 text-center">
-            <Link href="/trips" className="text-sm font-semibold text-river hover:underline">
+            <Link href="/trips" className="text-sm font-semibold text-pink hover:underline">
               &larr; Book another trip
             </Link>
           </div>

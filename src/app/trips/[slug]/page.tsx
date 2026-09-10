@@ -47,9 +47,9 @@ export default async function TripDetailPage({
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-forest py-12 text-white">
+        <section className="bg-black py-12 text-white">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <p className="text-sm font-semibold uppercase tracking-widest text-sand">
+            <p className="text-sm font-semibold uppercase tracking-widest text-white/70">
               {trip.durationLabel}
             </p>
             <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{trip.name}</h1>

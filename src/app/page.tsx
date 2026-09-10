@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -5,6 +6,12 @@ import { prisma } from "@/lib/prisma";
 import { formatCurrency } from "@/lib/pricing";
 
 export const dynamic = "force-dynamic";
+
+const CATEGORY_LABEL: Record<string, string> = {
+  FLOAT: "Float Trip",
+  CAMPING: "Camping",
+  COMBO: "Float + Camp",
+};
 
 export default async function Home() {
   const trips = await prisma.trip.findMany({
@@ -18,9 +25,18 @@ export default async function Home() {
       <SiteHeader />
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-river-dark to-river text-white">
+        <section className="relative isolate overflow-hidden bg-black text-white">
+          <Image
+            src="/hero_image_bg.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 -z-20 object-cover"
+          />
+          <div className="absolute inset-0 -z-10 bg-black/60" />
           <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
-            <p className="text-sm font-semibold uppercase tracking-widest text-sand">
+            <p className="text-sm font-semibold uppercase tracking-widest text-white/80">
               Ozarks, Missouri
             </p>
             <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl">
@@ -33,13 +49,13 @@ export default async function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/book"
-                className="rounded-full bg-white px-6 py-3 font-semibold text-river-dark shadow-lg transition hover:bg-sand"
+                className="rounded-full bg-pink px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-pink-dark"
               >
                 Check Availability
               </Link>
               <Link
                 href="/trips"
-                className="rounded-full border border-white/50 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+                className="rounded-full border-2 border-pink px-6 py-3 font-semibold text-white transition hover:bg-pink/15"
               >
                 View Trips &amp; Pricing
               </Link>
@@ -67,9 +83,9 @@ export default async function Home() {
                 desc: "All the gear you need, sized for your group, delivered clean and ready to launch.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-sand-dark/40 bg-white/60 p-6">
+              <div key={item.title} className="rounded-2xl border border-tint-dark bg-white p-6">
                 <div className="text-3xl">{item.icon}</div>
-                <h3 className="mt-3 text-lg font-semibold text-forest-dark">{item.title}</h3>
+                <h3 className="mt-3 text-lg font-semibold text-black">{item.title}</h3>
                 <p className="mt-2 text-sm text-foreground/70">{item.desc}</p>
               </div>
             ))}
@@ -77,13 +93,13 @@ export default async function Home() {
         </section>
 
         {/* Featured trips */}
-        <section className="bg-sand/40 py-16">
+        <section className="bg-tint py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="flex items-end justify-between">
-              <h2 className="text-2xl font-bold text-forest-dark sm:text-3xl">
+              <h2 className="text-2xl font-bold text-black sm:text-3xl">
                 Popular Trips &amp; Packages
               </h2>
-              <Link href="/trips" className="hidden text-sm font-semibold text-river hover:underline sm:block">
+              <Link href="/trips" className="hidden text-sm font-semibold text-pink hover:underline sm:block">
                 View all &rarr;
               </Link>
             </div>
@@ -96,27 +112,23 @@ export default async function Home() {
               {trips.map((trip) => (
                 <div
                   key={trip.id}
-                  className="flex flex-col rounded-2xl border border-sand-dark/40 bg-white p-6 shadow-sm"
+                  className="flex flex-col rounded-2xl border border-tint-dark bg-white p-6 shadow-sm"
                 >
-                  <span className="w-fit rounded-full bg-river/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-river">
-                    {trip.category === "FLOAT"
-                      ? "Float Trip"
-                      : trip.category === "CAMPING"
-                      ? "Camping"
-                      : "Float + Camp"}
+                  <span className="w-fit rounded-full bg-tint px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black/70">
+                    {CATEGORY_LABEL[trip.category]}
                   </span>
-                  <h3 className="mt-3 text-lg font-semibold text-forest-dark">{trip.name}</h3>
+                  <h3 className="mt-3 text-lg font-semibold text-black">{trip.name}</h3>
                   <p className="mt-2 flex-1 text-sm text-foreground/70">{trip.description}</p>
                   <div className="mt-4 flex items-center justify-between">
                     <span className="text-sm text-foreground/60">{trip.durationLabel}</span>
-                    <span className="font-semibold text-forest-dark">
+                    <span className="font-semibold text-black">
                       {formatCurrency(trip.basePrice)}
                       <span className="text-xs font-normal text-foreground/50">/person</span>
                     </span>
                   </div>
                   <Link
                     href={`/trips/${trip.slug}`}
-                    className="mt-4 rounded-full bg-forest px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-forest-dark"
+                    className="mt-4 rounded-full bg-pink px-4 py-2 text-center text-sm font-semibold text-white transition hover:bg-pink-dark"
                   >
                     View &amp; Book
                   </Link>
@@ -128,7 +140,7 @@ export default async function Home() {
 
         {/* FAQ */}
         <section id="faq" className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-          <h2 className="text-2xl font-bold text-forest-dark sm:text-3xl">
+          <h2 className="text-2xl font-bold text-black sm:text-3xl">
             Frequently Asked Questions
           </h2>
           <div className="mt-8 space-y-6">
@@ -150,8 +162,8 @@ export default async function Home() {
                 a: "Full refunds up to 48 hours before your trip. Weather cancellations initiated by us are always fully refunded or rescheduled.",
               },
             ].map((item) => (
-              <div key={item.q} className="rounded-xl border border-sand-dark/40 bg-white/60 p-5">
-                <h3 className="font-semibold text-forest-dark">{item.q}</h3>
+              <div key={item.q} className="rounded-xl border border-tint-dark bg-white p-5">
+                <h3 className="font-semibold text-black">{item.q}</h3>
                 <p className="mt-1 text-sm text-foreground/70">{item.a}</p>
               </div>
             ))}

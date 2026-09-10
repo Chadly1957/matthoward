@@ -35,19 +35,19 @@ export default async function EditTripPage({ params }: { params: Promise<{ id: s
   return (
     <div className="space-y-10">
       <div>
-        <h1 className="text-xl font-bold text-forest-dark">Edit Trip</h1>
+        <h1 className="text-xl font-bold text-black">Edit Trip</h1>
         <div className="mt-6">
           <TripForm tripId={trip.id} initial={{ ...trip, imageUrl: trip.imageUrl ?? undefined }} />
         </div>
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-forest-dark">Departure Dates</h2>
+        <h2 className="text-lg font-semibold text-black">Departure Dates</h2>
         <DepartureManager tripId={trip.id} departures={departures} />
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-forest-dark">Available Add-ons</h2>
+        <h2 className="text-lg font-semibold text-black">Available Add-ons</h2>
         <AddOnAssign
           tripId={trip.id}
           allAddOns={allAddOns}

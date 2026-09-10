@@ -35,10 +35,10 @@ export default function BookingRow({
   }
 
   return (
-    <tr className="border-t border-sand-dark/30 align-top">
+    <tr className="border-t border-tint-dark align-top">
       <td className="px-4 py-3 font-mono text-xs">{booking.confirmationCode}</td>
       <td className="px-4 py-3">
-        <div className="font-medium text-forest-dark">{booking.customerName}</div>
+        <div className="font-medium text-black">{booking.customerName}</div>
         <div className="text-xs text-foreground/60">{booking.customerEmail}</div>
         <div className="text-xs text-foreground/60">{booking.customerPhone}</div>
       </td>
@@ -58,7 +58,7 @@ export default function BookingRow({
           value={booking.status}
           disabled={isPending}
           onChange={(e) => setStatus(e.target.value as BookingStatus)}
-          className="rounded-lg border border-sand-dark/50 px-2 py-1 text-xs"
+          className="rounded-lg border border-tint-dark px-2 py-1 text-xs"
         >
           <option value="PENDING">Pending</option>
           <option value="CONFIRMED">Confirmed</option>

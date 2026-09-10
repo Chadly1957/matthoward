@@ -33,10 +33,10 @@ export default function AddOnAssign({
   }
 
   return (
-    <div className="mt-3 rounded-xl border border-sand-dark/40 bg-white p-4">
+    <div className="mt-3 rounded-xl border border-tint-dark bg-white p-4">
       <div className="grid gap-2 sm:grid-cols-2">
         {allAddOns.map((a) => (
-          <label key={a.id} className="flex items-center gap-2 text-sm text-forest-dark">
+          <label key={a.id} className="flex items-center gap-2 text-sm text-black">
             <input type="checkbox" checked={selected.includes(a.id)} onChange={() => toggle(a.id)} />
             {a.name} &mdash; ${a.price.toFixed(2)}
           </label>
@@ -45,7 +45,7 @@ export default function AddOnAssign({
       <button
         onClick={save}
         disabled={isPending}
-        className="mt-4 rounded-full bg-forest px-4 py-2 text-sm font-semibold text-white hover:bg-forest-dark disabled:opacity-60"
+        className="mt-4 rounded-full bg-pink px-4 py-2 text-sm font-semibold text-white hover:bg-pink-dark disabled:opacity-60"
       >
         {isPending ? "Saving..." : "Save Add-ons"}
       </button>

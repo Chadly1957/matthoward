@@ -104,7 +104,7 @@ export default function BookingClient({
 
   if (departures.length === 0) {
     return (
-      <div className="rounded-2xl border border-sand-dark/40 bg-white p-6 text-sm text-foreground/70">
+      <div className="rounded-2xl border border-tint-dark bg-white p-6 text-sm text-foreground/70">
         No upcoming dates are currently scheduled for this trip. Please check back soon or
         contact us to request a custom date.
       </div>
@@ -116,7 +116,7 @@ export default function BookingClient({
       <div className="space-y-8">
         {/* Step 1: date */}
         <div>
-          <h2 className="text-lg font-semibold text-forest-dark">1. Choose a date</h2>
+          <h2 className="text-lg font-semibold text-black">1. Choose a date</h2>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {departures.map((d) => {
               const left = d.capacity - d.booked;
@@ -130,11 +130,11 @@ export default function BookingClient({
                   onClick={() => setSelectedDeparture(d.id)}
                   className={`rounded-xl border px-4 py-3 text-left text-sm transition ${
                     active
-                      ? "border-river bg-river/10 ring-1 ring-river"
-                      : "border-sand-dark/40 bg-white hover:border-river/50"
+                      ? "border-pink bg-pink/10 ring-1 ring-pink"
+                      : "border-tint-dark bg-white hover:border-pink/50"
                   } ${full ? "cursor-not-allowed opacity-50" : ""}`}
                 >
-                  <div className="font-semibold text-forest-dark">
+                  <div className="font-semibold text-black">
                     {new Date(d.date).toLocaleDateString("en-US", {
                       weekday: "short",
                       month: "short",
@@ -142,7 +142,7 @@ export default function BookingClient({
                     })}
                   </div>
                   <div className="text-foreground/60">{formatTimeLabel(d.startTime)}</div>
-                  <div className={`mt-1 text-xs ${full ? "text-clay" : "text-forest"}`}>
+                  <div className={`mt-1 text-xs ${full ? "text-danger" : "text-black"}`}>
                     {full ? "Fully booked" : `${left} spot${left === 1 ? "" : "s"} left`}
                   </div>
                 </button>
@@ -153,26 +153,26 @@ export default function BookingClient({
 
         {/* Step 2: party size */}
         <div>
-          <h2 className="text-lg font-semibold text-forest-dark">2. Party size</h2>
+          <h2 className="text-lg font-semibold text-black">2. Party size</h2>
           <div className="mt-3 flex flex-wrap gap-6">
-            <label className="flex flex-col text-sm font-medium text-forest-dark">
+            <label className="flex flex-col text-sm font-medium text-black">
               Adults
               <input
                 type="number"
                 min={1}
                 value={adults}
                 onChange={(e) => setAdults(Math.max(1, Number(e.target.value)))}
-                className="mt-1 w-24 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 w-24 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
-            <label className="flex flex-col text-sm font-medium text-forest-dark">
+            <label className="flex flex-col text-sm font-medium text-black">
               Children
               <input
                 type="number"
                 min={0}
                 value={children}
                 onChange={(e) => setChildren(Math.max(0, Number(e.target.value)))}
-                className="mt-1 w-24 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 w-24 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
           </div>
@@ -181,15 +181,15 @@ export default function BookingClient({
         {/* Step 3: add-ons */}
         {addOns.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-forest-dark">3. Add-ons</h2>
+            <h2 className="text-lg font-semibold text-black">3. Add-ons</h2>
             <div className="mt-3 space-y-3">
               {addOns.map((a) => (
                 <div
                   key={a.id}
-                  className="flex items-center justify-between rounded-xl border border-sand-dark/40 bg-white px-4 py-3"
+                  className="flex items-center justify-between rounded-xl border border-tint-dark bg-white px-4 py-3"
                 >
                   <div>
-                    <div className="font-medium text-forest-dark">{a.name}</div>
+                    <div className="font-medium text-black">{a.name}</div>
                     {a.description && (
                       <div className="text-xs text-foreground/60">{a.description}</div>
                     )}
@@ -203,7 +203,7 @@ export default function BookingClient({
                     min={0}
                     value={addOnQty[a.id] ?? 0}
                     onChange={(e) => updateAddOnQty(a.id, Number(e.target.value))}
-                    className="w-20 rounded-lg border border-sand-dark/50 px-3 py-2 text-center"
+                    className="w-20 rounded-lg border border-tint-dark px-3 py-2 text-center"
                   />
                 </div>
               ))}
@@ -213,44 +213,44 @@ export default function BookingClient({
 
         {/* Step 4: contact info */}
         <div>
-          <h2 className="text-lg font-semibold text-forest-dark">4. Your information</h2>
+          <h2 className="text-lg font-semibold text-black">4. Your information</h2>
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
-            <label className="flex flex-col text-sm font-medium text-forest-dark sm:col-span-2">
+            <label className="flex flex-col text-sm font-medium text-black sm:col-span-2">
               Full name
               <input
                 required
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
-            <label className="flex flex-col text-sm font-medium text-forest-dark">
+            <label className="flex flex-col text-sm font-medium text-black">
               Email
               <input
                 required
                 type="email"
                 value={customerEmail}
                 onChange={(e) => setCustomerEmail(e.target.value)}
-                className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
-            <label className="flex flex-col text-sm font-medium text-forest-dark">
+            <label className="flex flex-col text-sm font-medium text-black">
               Phone
               <input
                 required
                 type="tel"
                 value={customerPhone}
                 onChange={(e) => setCustomerPhone(e.target.value)}
-                className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
-            <label className="flex flex-col text-sm font-medium text-forest-dark sm:col-span-2">
+            <label className="flex flex-col text-sm font-medium text-black sm:col-span-2">
               Notes (optional)
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 rows={3}
-                className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+                className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
               />
             </label>
           </div>
@@ -258,8 +258,8 @@ export default function BookingClient({
       </div>
 
       {/* Summary */}
-      <div className="h-fit rounded-2xl border border-sand-dark/40 bg-white p-6 shadow-sm lg:sticky lg:top-24">
-        <h2 className="text-lg font-semibold text-forest-dark">Order Summary</h2>
+      <div className="h-fit rounded-2xl border border-tint-dark bg-white p-6 shadow-sm lg:sticky lg:top-24">
+        <h2 className="text-lg font-semibold text-black">Order Summary</h2>
         {departure && (
           <p className="mt-2 text-sm text-foreground/70">
             {new Date(departure.date).toLocaleDateString("en-US", {
@@ -285,19 +285,19 @@ export default function BookingClient({
             </div>
           )}
         </div>
-        <div className="mt-4 flex justify-between border-t border-sand-dark/40 pt-4 text-base font-semibold text-forest-dark">
+        <div className="mt-4 flex justify-between border-t border-tint-dark pt-4 text-base font-semibold text-black">
           <span>Total</span>
           <span>{formatCurrency(totals.total)}</span>
         </div>
 
         {error && (
-          <p className="mt-4 rounded-lg bg-clay/10 px-3 py-2 text-sm text-clay">{error}</p>
+          <p className="mt-4 rounded-lg bg-danger/10 px-3 py-2 text-sm text-danger">{error}</p>
         )}
 
         <button
           type="submit"
           disabled={isPending}
-          className="mt-6 w-full rounded-full bg-river px-4 py-3 font-semibold text-white transition hover:bg-river-dark disabled:opacity-60"
+          className="mt-6 w-full rounded-full bg-pink px-4 py-3 font-semibold text-white transition hover:bg-pink-dark disabled:opacity-60"
         >
           {isPending ? "Booking..." : "Reserve Now"}
         </button>

@@ -82,29 +82,29 @@ export default function DepartureManager({
       <form
         key={formKey}
         onSubmit={handleAdd}
-        className="flex flex-wrap items-end gap-3 rounded-xl border border-sand-dark/40 bg-white p-4"
+        className="flex flex-wrap items-end gap-3 rounded-xl border border-tint-dark bg-white p-4"
       >
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Date
           <input
             required
             type="date"
             defaultValue={date}
             onChange={(e) => setDate(e.target.value)}
-            className="mt-1 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Start time
           <input
             required
             type="time"
             defaultValue={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            className="mt-1 w-32 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 w-32 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
-        <label className="flex flex-col text-sm font-medium text-forest-dark">
+        <label className="flex flex-col text-sm font-medium text-black">
           Capacity
           <input
             required
@@ -112,21 +112,21 @@ export default function DepartureManager({
             min={1}
             defaultValue={capacity}
             onChange={(e) => setCapacity(Number(e.target.value))}
-            className="mt-1 w-24 rounded-lg border border-sand-dark/50 px-3 py-2"
+            className="mt-1 w-24 rounded-lg border border-tint-dark px-3 py-2"
           />
         </label>
         <button
           type="submit"
           disabled={isPending}
-          className="rounded-full bg-river px-4 py-2 text-sm font-semibold text-white hover:bg-river-dark disabled:opacity-60"
+          className="rounded-full bg-pink px-4 py-2 text-sm font-semibold text-white hover:bg-pink-dark disabled:opacity-60"
         >
           Add Date
         </button>
       </form>
 
-      <div className="mt-4 overflow-x-auto rounded-xl border border-sand-dark/40 bg-white">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-tint-dark bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-sand/40 text-left text-foreground/60">
+          <thead className="bg-tint text-left text-foreground/60">
             <tr>
               <th className="px-4 py-2">Date</th>
               <th className="px-4 py-2">Time</th>
@@ -140,7 +140,7 @@ export default function DepartureManager({
             {departures.map((d) => {
               const isEditing = editingId === d.id;
               return (
-                <tr key={d.id} className="border-t border-sand-dark/30">
+                <tr key={d.id} className="border-t border-tint-dark">
                   {isEditing ? (
                     <>
                       <td className="px-4 py-2">
@@ -148,7 +148,7 @@ export default function DepartureManager({
                           type="date"
                           value={editDate}
                           onChange={(e) => setEditDate(e.target.value)}
-                          className="rounded-lg border border-sand-dark/50 px-2 py-1"
+                          className="rounded-lg border border-tint-dark px-2 py-1"
                         />
                       </td>
                       <td className="px-4 py-2">
@@ -156,7 +156,7 @@ export default function DepartureManager({
                           type="time"
                           value={editStartTime}
                           onChange={(e) => setEditStartTime(e.target.value)}
-                          className="w-28 rounded-lg border border-sand-dark/50 px-2 py-1"
+                          className="w-28 rounded-lg border border-tint-dark px-2 py-1"
                         />
                       </td>
                       <td className="px-4 py-2">
@@ -165,7 +165,7 @@ export default function DepartureManager({
                           min={1}
                           value={editCapacity}
                           onChange={(e) => setEditCapacity(Number(e.target.value))}
-                          className="w-20 rounded-lg border border-sand-dark/50 px-2 py-1"
+                          className="w-20 rounded-lg border border-tint-dark px-2 py-1"
                         />
                       </td>
                       <td className="px-4 py-2">
@@ -174,7 +174,7 @@ export default function DepartureManager({
                       <td className="px-4 py-2">
                         <span
                           className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                            d.cancelled ? "bg-clay/10 text-clay" : "bg-forest/10 text-forest"
+                            d.cancelled ? "bg-danger/10 text-danger" : "bg-tint text-black/70"
                           }`}
                         >
                           {d.cancelled ? "Cancelled" : "Open"}
@@ -184,7 +184,7 @@ export default function DepartureManager({
                         <button
                           onClick={() => saveEdit(d.id)}
                           disabled={isPending}
-                          className="font-medium text-river hover:underline disabled:opacity-60"
+                          className="font-medium text-pink hover:underline disabled:opacity-60"
                         >
                           Save
                         </button>
@@ -210,14 +210,14 @@ export default function DepartureManager({
                       <td className="px-4 py-2">
                         <span
                           className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                            d.cancelled ? "bg-clay/10 text-clay" : "bg-forest/10 text-forest"
+                            d.cancelled ? "bg-danger/10 text-danger" : "bg-tint text-black/70"
                           }`}
                         >
                           {d.cancelled ? "Cancelled" : "Open"}
                         </span>
                       </td>
                       <td className="space-x-3 px-4 py-2 text-right text-xs">
-                        <button onClick={() => startEdit(d)} className="font-medium text-river hover:underline">
+                        <button onClick={() => startEdit(d)} className="font-medium text-pink hover:underline">
                           Edit
                         </button>
                         <button
@@ -227,7 +227,7 @@ export default function DepartureManager({
                               router.refresh();
                             })
                           }
-                          className="font-medium text-river hover:underline"
+                          className="font-medium text-pink hover:underline"
                         >
                           {d.cancelled ? "Reopen" : "Cancel"}
                         </button>
@@ -239,7 +239,7 @@ export default function DepartureManager({
                               router.refresh();
                             });
                           }}
-                          className="font-medium text-clay hover:underline"
+                          className="font-medium text-danger hover:underline"
                         >
                           Delete
                         </button>
