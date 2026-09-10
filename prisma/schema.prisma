@@ -1,4 +1,4 @@
-// Meramec River Outfitters — booking platform data model
+// Big H Recreations LLC — booking platform data model
 // NOTE: provider is "postgresql". On Vercel, set DATABASE_URL to a hosted
 // Postgres instance (Vercel Postgres, Neon, Supabase, etc). Locally this
 // points at a local Postgres server for development.

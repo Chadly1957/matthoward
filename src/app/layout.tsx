@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Meramec River Outfitters | Hassle-Free Floating & Camping",
+  title: "Big H Recreations LLC | Hassle-Free Floating & Camping",
   description:
     "Hassle free floating and camping on the Meramec River, Missouri. Book float trips, campsites, and rental packages in the Ozarks.",
 };

@@ -3,7 +3,7 @@ export default function SiteFooter() {
     <footer id="contact" className="mt-auto border-t border-sand-dark/60 bg-forest text-sand">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
-          <h3 className="text-lg font-semibold text-white">Meramec River Outfitters</h3>
+          <h3 className="text-lg font-semibold text-white">Big H Recreations LLC</h3>
           <p className="mt-2 text-sm text-sand/80">
             Hassle-free floating and camping on the Meramec River in the Ozarks of Missouri.
           </p>
@@ -12,7 +12,7 @@ export default function SiteFooter() {
           <h4 className="font-semibold text-white">Contact</h4>
           <p className="mt-2">Meramec River, Ozarks, Missouri</p>
           <p>(573) 555-0142</p>
-          <p>booking@meramecoutfitters.com</p>
+          <p>booking@bighrecreations.com</p>
         </div>
         <div className="text-sm text-sand/80">
           <h4 className="font-semibold text-white">Hours</h4>
@@ -21,7 +21,7 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-sand/10 py-4 text-center text-xs text-sand/60">
-        &copy; {new Date().getFullYear()} Meramec River Outfitters. All rights reserved.
+        &copy; {new Date().getFullYear()} Big H Recreations LLC. All rights reserved.
       </div>
     </footer>
   );
