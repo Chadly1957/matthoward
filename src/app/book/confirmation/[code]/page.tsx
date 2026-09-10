@@ -3,7 +3,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { prisma } from "@/lib/prisma";
-import { formatCurrency } from "@/lib/pricing";
+import { formatCurrency, formatTimeLabel } from "@/lib/pricing";
 
 export default async function ConfirmationPage({
   params,
@@ -56,7 +56,7 @@ export default async function ConfirmationPage({
                     month: "long",
                     day: "numeric",
                   })}{" "}
-                  &middot; {booking.departure.startTime}
+                  &middot; {formatTimeLabel(booking.departure.startTime)}
                 </dd>
               </div>
               <div className="flex justify-between">
