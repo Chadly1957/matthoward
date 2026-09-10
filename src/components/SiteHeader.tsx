@@ -9,8 +9,8 @@ export default function SiteHeader() {
           <Image
             src="/big_h_web_logo.png"
             alt="Big H Recreations LLC"
-            width={192}
-            height={48}
+            width={1898}
+            height={975}
             className="h-11 w-auto"
             priority
           />

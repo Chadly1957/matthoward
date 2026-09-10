@@ -11,8 +11,8 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
             <Image
               src="/big_h_web_logo.png"
               alt="Big H Recreations LLC"
-              width={140}
-              height={36}
+              width={1898}
+              height={975}
               className="h-8 w-auto"
             />
             Big H Admin
